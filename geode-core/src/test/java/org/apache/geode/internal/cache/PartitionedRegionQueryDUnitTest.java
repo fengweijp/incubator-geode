@@ -113,43 +113,14 @@ public class PartitionedRegionQueryDUnitTest extends JUnit4CacheTestCase {
       }
     });
     
-    vm0.invoke(new SerializableRunnable("resetting sqt") {
-      public void run() {        
-        IndexManager.setIndexBufferTime(Long.MAX_VALUE, Long.MAX_VALUE);
-      }
-    });
+
     
-    vm1.invoke(new SerializableRunnable("resetting sqt") {
-      public void run() {
-        IndexManager.setIndexBufferTime(Long.MAX_VALUE, Long.MAX_VALUE);
-      }
+    vm0.invoke(() -> {
+      QueryService qs = getCache().getQueryService();
+      qs.newQuery(
+        "SELECT DISTINCT entry.key, entry.value FROM /region.entrySet entry WHERE entry.value.score >= 5 AND entry.value.score <= 10 ORDER BY value asc")
+        .execute();
     });
-    
-    vm0.invoke(new SerializableRunnable("query") {
-      public void run() {
-        try {
-          QueryService qs = getCache().getQueryService();
-          qs.newQuery("SELECT DISTINCT entry.key, entry.value FROM /region.entrySet entry WHERE entry.value.score >= 5 AND entry.value.score <= 10 ORDER BY value asc").execute();
-        }
-        catch (QueryInvocationTargetException e) {
-          e.printStackTrace();
-          fail (e.toString());
-        }
-        catch (NameResolutionException e) {
-          fail (e.toString());
-
-        }
-        catch (TypeMismatchException e) {
-          fail (e.toString());
-
-        }
-        catch (FunctionDomainException e) {
-          fail (e.toString());
-
-        }
-        
-      }
-    });    
   }
   
   /**

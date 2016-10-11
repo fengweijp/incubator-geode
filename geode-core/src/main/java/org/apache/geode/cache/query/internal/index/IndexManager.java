@@ -103,10 +103,11 @@ public class IndexManager  {
   public static boolean TEST_RANGEINDEX_ONLY = false;
   public static final String INDEX_ELEMARRAY_THRESHOLD_PROP = "index_elemarray_threshold";
   public static final String INDEX_ELEMARRAY_SIZE_PROP = "index_elemarray_size";
+  public static final String IN_PROGRESS_UPDATE_WINDOW_PROP = "index.IN_PROGRESS_UPDATE_WINDOW_MS";
   public static final int INDEX_ELEMARRAY_THRESHOLD = Integer.parseInt(System.getProperty(INDEX_ELEMARRAY_THRESHOLD_PROP,"100"));
   public static final int INDEX_ELEMARRAY_SIZE = Integer.parseInt(System.getProperty(INDEX_ELEMARRAY_SIZE_PROP,"5"));
-  public final static AtomicLong SAFE_QUERY_TIME = new AtomicLong(0);
-  public static boolean ENABLE_UPDATE_IN_PROGRESS_INDEX_CALCULATION = true;
+
+  public static long IN_PROGRESS_UPDATE_WINDOW = Long.getLong(IN_PROGRESS_UPDATE_WINDOW_PROP, 10 * 60 * 1000);
   /** The NULL constant */
   public static final Object NULL = new NullToken();
 
@@ -137,37 +138,9 @@ public class IndexManager  {
   }
    
   /**
-   * Stores the largest combination of current time + delta
-   * If there is a large delta/hiccup in timings, this allows us to calculate the 
-   * correct results for a query but, reevaluate more aggressively.
-   * But the large hiccup will eventually be rolled off as time is always increasing
-   * This is a fix for #47475
-   * 
-   * @param operationTime the last modified time from version tag
-   * @param currentCacheTime
-   */
-  public static boolean setIndexBufferTime(long operationTime, long currentCacheTime) {
-    long timeDifference = currentCacheTime - operationTime;
-    return setNewLargestValue(SAFE_QUERY_TIME, currentCacheTime + timeDifference);
-  }
-  
-  /** only for test purposes 
-   * This should not be called from any product code.  Calls from product code will 
-   * possibly cause continous reevaluation (performance issue) OR
-   * incorrect query results (functional issue)
-   **/
-  public static void resetIndexBufferTime() {
-    SAFE_QUERY_TIME.set(0);
-  }
-  
-  /**
-   * Calculates whether we need to reevluate the key for the region entry
-   * We added a way to determine whether to reevaluate an entry for query execution
-   * The method is to keep track of the delta and current time in a single long value
-   * The value is then used by the query to determine if a region entry needs to be reevaluated,
-   * based on subtracting the value with the query execution time.  This provides a delta + some false positive time (dts)
-   * If the dts + last modified time of the region entry is > query start time, 
-   * we can assume that it needs to be reevaluated
+   * Calculates whether we need to reevaluate the key for the region entry
+   * We added a way to determine whether to reevaluate an entry for query execution.
+   * If the start time of the query - the last modified time of the entr
    *
    * This is to fix bug 47475, where references to region entries can be held
    * by the executing query either directly or indirectly (iterators can hold 
@@ -178,28 +151,9 @@ public class IndexManager  {
    * @param lastModifiedTime
    */
   public static boolean needsRecalculation(long queryStartTime, long lastModifiedTime) {
-    return ENABLE_UPDATE_IN_PROGRESS_INDEX_CALCULATION && queryStartTime <= SAFE_QUERY_TIME.get() - queryStartTime + lastModifiedTime;
+    return IN_PROGRESS_UPDATE_WINDOW >= queryStartTime - lastModifiedTime;
   }
   
-  /**
-   * 
-   * @param value
-   * @param newValue
-   */
-  private static boolean setNewLargestValue(AtomicLong value, long newValue) {
-    boolean done = false;
-    while (!done) {
-      long oldValue = value.get();
-      if (oldValue < newValue ) {
-        return value.compareAndSet(oldValue, newValue);
-      }
-      else {
-        done = true;
-      }
-    }
-    return false;
-  }
-
   /** Test Hook */
   public interface TestHook {
     public void hook(final int spot) throws RuntimeException;

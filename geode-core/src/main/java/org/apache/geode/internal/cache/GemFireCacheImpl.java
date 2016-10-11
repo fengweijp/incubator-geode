@@ -368,7 +368,7 @@ public class GemFireCacheImpl implements InternalCache, ClientCache, HasCachePer
    * operations. It is assumed that the traversal operations on cache servers list vastly outnumber the mutative
    * operations such as add, remove.
    */
-  private volatile List allCacheServers = new CopyOnWriteArrayList();
+  private final List allCacheServers = new CopyOnWriteArrayList();
 
   /**
    * Controls updates to the list of all gateway senders

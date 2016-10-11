@@ -43,6 +43,7 @@ import org.apache.geode.test.junit.categories.IntegrationTest;
 @Category(IntegrationTest.class)
 public class IndexManagerJUnitTest
 {
+  public long originalUpdateWindow;
 
   @Before
   public void setUp() throws java.lang.Exception
@@ -53,6 +54,7 @@ public class IndexManagerJUnitTest
       region.put("" + i, new Portfolio(i));
       // CacheUtils.log(new Portfolio(i));
     }
+    originalUpdateWindow = IndexManager.IN_PROGRESS_UPDATE_WINDOW;
 
   }
 
@@ -60,6 +62,7 @@ public class IndexManagerJUnitTest
   public void tearDown() throws java.lang.Exception
   {
     CacheUtils.closeCache();
+    IndexManager.IN_PROGRESS_UPDATE_WINDOW = originalUpdateWindow;
   }
   
   /**
@@ -73,64 +76,14 @@ public class IndexManagerJUnitTest
    */
   @Test
   public void testSafeQueryTime() {
-    IndexManager.resetIndexBufferTime();
-    //fake entry update at LMT of 0 and actual time of 10
-    //safe query time set in index manager is going to be 20
-    assertTrue(IndexManager.setIndexBufferTime(0, 10));
-    
+
+    IndexManager.IN_PROGRESS_UPDATE_WINDOW = 10;
     //fake query start at actual time of 9, 10, 11 and using the fake LMT of 0
     assertTrue(IndexManager.needsRecalculation(9, 0));
     assertTrue(IndexManager.needsRecalculation(10, 0));
     assertFalse(IndexManager.needsRecalculation(11, 0));
-    
-    assertFalse(IndexManager.needsRecalculation(9, -3)); //old enough updates shouldn't trigger a recalc
-    assertTrue(IndexManager.needsRecalculation(9, -2)); //older updates but falls within the delta (false positive)
-
-    assertTrue(IndexManager.needsRecalculation(10, 5));
-    //This should eval to true only because of false positives.  
-    assertTrue(IndexManager.needsRecalculation(11, 5));
-    
-    //Now let's assume a new update has occurred, this update delta and time combo still is not larger
-    assertFalse(IndexManager.setIndexBufferTime(0, 9));
-    assertFalse(IndexManager.setIndexBufferTime(1, 10));
-    
-    //Now let's assume a new update has occured where the time is larger (enough to roll off the large delta)
-    //but the delta is smaller
-    assertTrue(IndexManager.setIndexBufferTime(30, 30));
-    
-    //Now that we have a small delta, let's see if a query that was "stuck" would reevaluate appropriately
-    assertTrue(IndexManager.needsRecalculation(9, 0));
   }
 
-  //Let's test for negative delta's or a system that is slower than others in the  cluster
-  @Test
-  public void testSafeQueryTimeForASlowNode() {
-    IndexManager.resetIndexBufferTime();
-    //fake entry update at LMT of 0 and actual time of 10
-    //safe query time set in index manager is going to be -10
-    assertTrue(IndexManager.setIndexBufferTime(210, 200));
-    
-    assertFalse(IndexManager.needsRecalculation(200, 190)); 
-    assertFalse(IndexManager.needsRecalculation(200, 200));
-    assertTrue(IndexManager.needsRecalculation(200, 210));
-
-    assertTrue(IndexManager.needsRecalculation(200, 220));
-    assertTrue(IndexManager.needsRecalculation(200, 221));
-    
-    //now lets say an entry updates with no delta
-    assertTrue(IndexManager.setIndexBufferTime(210, 210));
-    
-    assertTrue(IndexManager.needsRecalculation(200, 190)); 
-    assertTrue(IndexManager.needsRecalculation(200, 200));
-    assertTrue(IndexManager.needsRecalculation(200, 210));
-
-    assertTrue(IndexManager.needsRecalculation(200, 220));
-    assertTrue(IndexManager.needsRecalculation(200, 221));
-    
-    assertTrue(IndexManager.needsRecalculation(210, 211));
-    assertFalse(IndexManager.needsRecalculation(212, 210));
-  }
-    
 
   @Test
   public void testBestIndexPick() throws Exception
