@@ -81,7 +81,7 @@ bound)"
 <p>
 <em>Integer</em> (default is 60000)
 <p>
-See <code>org.apache.geode.admin.internal.AdminDistributedSystemImpl#TIMEOUT_MS</code>.
+See <code>org.apache.geode.internal.admin.api.impl.AdminDistributedSystemImpl#TIMEOUT_MS</code>.
 <p>
 TBA
 </dd>
@@ -1662,11 +1662,11 @@ Clear pdxType ids when client disconnects from servers
 <p>
 <em>Boolean</em> (default is false)
 <p>
-See <code>org.apache.geode.admin.GemFireMonitorService#processGetValCommand</code>.
+See <code>org.apache.geode.internal.admin.api.GemFireMonitorService#processGetValCommand</code>.
 <p>
-See <code>org.apache.geode.admin.remote.RemoteCacheInfo.RemoteCacheInfo(GemFireCache)</code>.
+See <code>org.apache.geode.internal.admin.remote.RemoteCacheInfo.RemoteCacheInfo(GemFireCache)</code>.
 <p>
-See <code>org.apache.geode.admin.remote.RootRegionResponse#create(DistributionManager, InternalDistributedMember)</code>.
+See <code>org.apache.geode.internal.admin.remote.RootRegionResponse#create(DistributionManager, InternalDistributedMember)</code>.
 <p>
 See <code>org.apache.geode.internal.cache.PartitionedRegionDataStore#createBucketRegion(int)</code>.
 <p>
@@ -1936,7 +1936,7 @@ Timeout to set for client function execution
 <p>
 <em>String</em> (default is unset, to use System.out)
 <p>
-See <code>org.apache.geode.admin.GemFireClientAdminTool#logFileName</code>.
+See <code>org.apache.geode.internal.admin.api.GemFireClientAdminTool#logFileName</code>.
 <p>
 This is a file name.
 <p>
@@ -2464,7 +2464,7 @@ TBA
 <p>
 <em>Long</em> (default is 5000)
 <p>
-See <code>org.apache.geode.admin.GemFireClientAdminTool#_statusPollingDelay</code>.
+See <code>org.apache.geode.internal.admin.api.GemFireClientAdminTool#_statusPollingDelay</code>.
 <p>
 Units are in milliseconds.
 <p>
@@ -2593,7 +2593,7 @@ TBA
 <p>
 <em>Boolean</em>
 <p>
-See <code>org.apache.geode.admin.jmx.internal.AgentImpl#checkDebug</code>.
+See <code>org.apache.geode.internal.admin.api.jmx.impl.AgentImpl#checkDebug</code>.
 <p>
 <pre>
   Enables mx4j tracing if Agent debugging is enabled.
@@ -2609,7 +2609,7 @@ TBA
 <p>
 <em>String</em>
 <p>
-See <code>org.apache.geode.admin.jmx.internal.AgentConfigImpl#retrievePropertyFile</code>.
+See <code>org.apache.geode.internal.admin.api.jmx.impl.AgentConfigImpl#retrievePropertyFile</code>.
 <p>
 <pre>
    The <code>propertyFile</code> is the name of the property file that will 
@@ -2799,7 +2799,7 @@ TBA
 <p>
 <em>String</em> (default is org.apache.commons.logging.impl.SimpleLog)
 <p>
-See <code>org.apache.geode.admin.jmx.internal.AgentImpl class init</code>.
+See <code>org.apache.geode.internal.admin.api.jmx.impl.AgentImpl class init</code>.
 <p>
 This is the name of a class.
 <p>

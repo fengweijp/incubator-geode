@@ -21,8 +21,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-import org.apache.geode.test.dunit.cache.internal.JUnit4CacheTestCase;
-import org.apache.geode.test.dunit.internal.JUnit4DistributedTestCase;
 import org.apache.geode.test.junit.categories.DistributedTest;
 
 import java.io.BufferedReader;
@@ -40,10 +38,8 @@ import java.util.TreeSet;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.geode.GemFireIOException;
-import org.apache.geode.admin.BackupStatus;
-import org.apache.geode.admin.internal.FinishBackupRequest;
-import org.apache.geode.admin.internal.PrepareBackupRequest;
+import org.apache.geode.internal.admin.api.BackupStatus;
+import org.apache.geode.internal.admin.api.impl.PrepareBackupRequest;
 import org.apache.geode.cache.Cache;
 import org.apache.geode.cache.DataPolicy;
 import org.apache.geode.cache.DiskStore;

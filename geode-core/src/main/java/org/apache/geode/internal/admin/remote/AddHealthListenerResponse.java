@@ -19,7 +19,7 @@
 package org.apache.geode.internal.admin.remote;
 
 //import org.apache.geode.*;
-import org.apache.geode.admin.GemFireHealthConfig;
+import org.apache.geode.internal.admin.api.GemFireHealthConfig;
 //import org.apache.geode.internal.*;
 //import org.apache.geode.internal.admin.*;
 import org.apache.geode.distributed.internal.*;

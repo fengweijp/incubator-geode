@@ -16,7 +16,7 @@
  */
 package org.apache.geode.internal;
 
-import org.apache.geode.admin.internal.InetAddressUtil;
+import org.apache.geode.internal.admin.api.impl.InetAddressUtil;
 import org.apache.geode.distributed.internal.DistributionConfig;
 import org.apache.geode.test.junit.categories.IntegrationTest;
 import org.junit.After;

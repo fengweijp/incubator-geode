@@ -22,8 +22,8 @@ import java.util.Set;
 
 import org.apache.logging.log4j.Logger;
 
-import org.apache.geode.admin.OperationCancelledException;
-import org.apache.geode.admin.RuntimeAdminException;
+import org.apache.geode.internal.admin.api.OperationCancelledException;
+import org.apache.geode.internal.admin.api.RuntimeAdminException;
 import org.apache.geode.distributed.internal.DistributionManager;
 import org.apache.geode.distributed.internal.ReplyProcessor21;
 import org.apache.geode.distributed.internal.membership.InternalDistributedMember;

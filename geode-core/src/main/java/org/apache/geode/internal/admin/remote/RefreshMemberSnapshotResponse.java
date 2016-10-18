@@ -22,7 +22,7 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 import org.apache.geode.DataSerializer;
-import org.apache.geode.admin.GemFireMemberStatus;
+import org.apache.geode.internal.admin.api.GemFireMemberStatus;
 import org.apache.geode.cache.CacheFactory;
 import org.apache.geode.distributed.DistributedSystem;
 import org.apache.geode.distributed.internal.DistributionManager;
@@ -31,7 +31,7 @@ import org.apache.geode.internal.cache.GemFireCacheImpl;
 
 /**
  * A message that is sent to a particular distribution manager to get its
- * current {@link org.apache.geode.admin.GemFireMemberStatus}.
+ * current {@link GemFireMemberStatus}.
  * 
  */
 public class RefreshMemberSnapshotResponse extends AdminResponse {

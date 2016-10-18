@@ -37,10 +37,10 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import org.apache.geode.DataSerializer;
-import org.apache.geode.admin.AdminDistributedSystem;
-import org.apache.geode.admin.AdminDistributedSystemFactory;
-import org.apache.geode.admin.AdminException;
-import org.apache.geode.admin.DistributedSystemConfig;
+import org.apache.geode.internal.admin.api.AdminDistributedSystem;
+import org.apache.geode.internal.admin.api.AdminDistributedSystemFactory;
+import org.apache.geode.internal.admin.api.AdminException;
+import org.apache.geode.internal.admin.api.DistributedSystemConfig;
 import org.apache.geode.cache.AttributesFactory;
 import org.apache.geode.cache.Cache;
 import org.apache.geode.cache.CacheClosedException;

@@ -19,15 +19,13 @@
 package org.apache.geode.internal.admin.remote;
 
 import org.apache.geode.*;
-//import org.apache.geode.admin.OperationCancelledException;
-import org.apache.geode.admin.RegionNotFoundException;
+import org.apache.geode.internal.admin.api.RegionNotFoundException;
 import org.apache.geode.cache.*;
 //import org.apache.geode.internal.*;
 //import org.apache.geode.internal.cache.*;
 //import org.apache.geode.distributed.internal.*;
 import org.apache.geode.distributed.DistributedSystem;
 import org.apache.geode.internal.i18n.LocalizedStrings;
-//import org.apache.geode.internal.admin.*;
 import java.io.*;
 //import java.util.*;
 

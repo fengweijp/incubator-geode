@@ -26,7 +26,7 @@ import org.apache.geode.StatisticDescriptor;
 import org.apache.geode.Statistics;
 import org.apache.geode.StatisticsFactory;
 import org.apache.geode.StatisticsType;
-import org.apache.geode.admin.Statistic;
+import org.apache.geode.internal.admin.api.Statistic;
 
 /**
  * 

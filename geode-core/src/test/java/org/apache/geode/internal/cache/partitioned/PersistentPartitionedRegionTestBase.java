@@ -30,11 +30,11 @@ import java.util.TreeSet;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.geode.admin.AdminDistributedSystem;
-import org.apache.geode.admin.AdminDistributedSystemFactory;
-import org.apache.geode.admin.AdminException;
-import org.apache.geode.admin.BackupStatus;
-import org.apache.geode.admin.DistributedSystemConfig;
+import org.apache.geode.internal.admin.api.AdminDistributedSystem;
+import org.apache.geode.internal.admin.api.AdminDistributedSystemFactory;
+import org.apache.geode.internal.admin.api.AdminException;
+import org.apache.geode.internal.admin.api.BackupStatus;
+import org.apache.geode.internal.admin.api.DistributedSystemConfig;
 import org.apache.geode.cache.AttributesFactory;
 import org.apache.geode.cache.Cache;
 import org.apache.geode.cache.DataPolicy;

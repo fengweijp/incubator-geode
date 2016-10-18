@@ -19,7 +19,7 @@
 package org.apache.geode.internal.admin.remote;
 
 import org.apache.geode.*;
-import org.apache.geode.admin.AlertLevel;
+import org.apache.geode.internal.admin.api.AlertLevel;
 import org.apache.geode.distributed.internal.*;
 //import org.apache.geode.internal.*;
 import org.apache.geode.internal.admin.*;

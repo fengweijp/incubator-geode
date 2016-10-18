@@ -17,7 +17,7 @@
 package org.apache.geode.distributed.internal;
 
 import org.apache.geode.*;
-import org.apache.geode.admin.GemFireHealthConfig;
+import org.apache.geode.internal.admin.api.GemFireHealthConfig;
 import org.apache.geode.distributed.DistributedMember;
 import org.apache.geode.distributed.DistributedSystemDisconnectedException;
 import org.apache.geode.distributed.Locator;

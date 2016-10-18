@@ -22,17 +22,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import org.apache.geode.SystemFailure;
-import org.apache.geode.admin.AdminException;
-import org.apache.geode.admin.GemFireHealth;
-import org.apache.geode.admin.GemFireHealthConfig;
-import org.apache.geode.admin.GemFireMemberStatus;
-import org.apache.geode.admin.OperationCancelledException;
-import org.apache.geode.admin.RegionSubRegionSnapshot;
+import org.apache.geode.internal.admin.api.AdminException;
+import org.apache.geode.internal.admin.api.GemFireHealth;
+import org.apache.geode.internal.admin.api.GemFireHealthConfig;
+import org.apache.geode.internal.admin.api.GemFireMemberStatus;
+import org.apache.geode.internal.admin.api.OperationCancelledException;
+import org.apache.geode.internal.admin.api.RegionSubRegionSnapshot;
 import org.apache.geode.cache.Region;
 import org.apache.geode.cache.RegionAttributes;
 import org.apache.geode.distributed.internal.DistributionMessage;
@@ -443,7 +442,7 @@ public abstract class RemoteGemFireVM implements GemFireVM {
   }
   
   /**
-   * Returns the runtime {@link org.apache.geode.admin.GemFireMemberStatus} from the vm
+   * Returns the runtime {@link GemFireMemberStatus} from the vm
    * The idea is this snapshot is similar to stats that represent the current state of a 
    * running VM. However, this is a bit higher level than a stat 
    */
@@ -454,7 +453,7 @@ public abstract class RemoteGemFireVM implements GemFireVM {
   }
 
   /**
-   * Returns the runtime {@link org.apache.geode.admin.RegionSubRegionSnapshot} from the vm
+   * Returns the runtime {@link RegionSubRegionSnapshot} from the vm
    * The idea is this snapshot is quickly salvageable to present a cache's region's info 
    */
   public RegionSubRegionSnapshot getRegionSnapshot(){

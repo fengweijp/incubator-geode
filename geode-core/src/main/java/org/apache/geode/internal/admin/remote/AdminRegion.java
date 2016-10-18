@@ -19,11 +19,10 @@
 package org.apache.geode.internal.admin.remote;
 
 //import org.apache.geode.*;
-import org.apache.geode.admin.RuntimeAdminException;
+import org.apache.geode.internal.admin.api.RuntimeAdminException;
 import org.apache.geode.cache.*;
 import org.apache.geode.cache.query.SelectResults;
 import org.apache.geode.cache.snapshot.RegionSnapshotService;
-import org.apache.geode.internal.cache.snapshot.RegionSnapshotServiceImpl;
 import org.apache.geode.internal.i18n.LocalizedStrings;
 //import org.apache.geode.internal.*;
 //import org.apache.geode.internal.admin.*;

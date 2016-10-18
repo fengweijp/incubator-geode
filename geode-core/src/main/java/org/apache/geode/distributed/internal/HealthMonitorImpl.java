@@ -19,9 +19,9 @@ package org.apache.geode.distributed.internal;
 
 import org.apache.logging.log4j.Logger;
 
-import org.apache.geode.admin.GemFireHealth;
-import org.apache.geode.admin.GemFireHealthConfig;
-import org.apache.geode.admin.internal.GemFireHealthEvaluator;
+import org.apache.geode.internal.admin.api.GemFireHealth;
+import org.apache.geode.internal.admin.api.GemFireHealthConfig;
+import org.apache.geode.internal.admin.api.impl.GemFireHealthEvaluator;
 import org.apache.geode.distributed.internal.membership.InternalDistributedMember;
 import org.apache.geode.internal.admin.remote.HealthListenerMessage;
 import org.apache.geode.internal.i18n.LocalizedStrings;

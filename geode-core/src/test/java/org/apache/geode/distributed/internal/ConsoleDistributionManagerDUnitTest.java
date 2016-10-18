@@ -58,8 +58,7 @@ import org.apache.geode.test.junit.categories.DistributedTest;
 import org.apache.geode.test.junit.categories.FlakyTest;
 
 /**
- * This class tests the functionality of the {@linkplain org.apache.geode.internal.admin internal
- * admin} API.
+ * This class tests the functionality of the internal admin API.
  */
 @Category(DistributedTest.class)
 public class ConsoleDistributionManagerDUnitTest extends JUnit4CacheTestCase implements AlertListener {

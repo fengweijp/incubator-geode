@@ -19,9 +19,9 @@ package org.apache.geode.internal;
 import static org.apache.geode.distributed.ConfigurationProperties.*;
 
 import org.apache.geode.*;
-import org.apache.geode.admin.AdminException;
-import org.apache.geode.admin.BackupStatus;
-import org.apache.geode.admin.internal.AdminDistributedSystemImpl;
+import org.apache.geode.internal.admin.api.AdminException;
+import org.apache.geode.internal.admin.api.BackupStatus;
+import org.apache.geode.internal.admin.api.impl.AdminDistributedSystemImpl;
 import org.apache.geode.cache.persistence.PersistentID;
 import org.apache.geode.distributed.DistributedMember;
 import org.apache.geode.distributed.internal.*;

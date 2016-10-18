@@ -23,10 +23,10 @@ import java.util.Set;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import org.apache.geode.admin.AdminDistributedSystemFactory;
-import org.apache.geode.admin.AdminException;
-import org.apache.geode.admin.DistributedSystemConfig;
-import org.apache.geode.admin.internal.AdminDistributedSystemImpl;
+import org.apache.geode.internal.admin.api.AdminDistributedSystemFactory;
+import org.apache.geode.internal.admin.api.AdminException;
+import org.apache.geode.internal.admin.api.DistributedSystemConfig;
+import org.apache.geode.internal.admin.api.impl.AdminDistributedSystemImpl;
 import org.apache.geode.cache.Region;
 import org.apache.geode.internal.cache.CacheObserverAdapter;
 import org.apache.geode.internal.cache.CacheObserverHolder;

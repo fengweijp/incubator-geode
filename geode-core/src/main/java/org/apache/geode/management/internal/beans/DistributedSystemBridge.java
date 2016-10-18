@@ -44,8 +44,8 @@ import javax.management.ObjectName;
 
 import org.apache.logging.log4j.Logger;
 
-import org.apache.geode.admin.internal.BackupDataStoreHelper;
-import org.apache.geode.admin.internal.BackupDataStoreResult;
+import org.apache.geode.internal.admin.api.impl.BackupDataStoreHelper;
+import org.apache.geode.internal.admin.api.impl.BackupDataStoreResult;
 import org.apache.geode.cache.persistence.PersistentID;
 import org.apache.geode.distributed.DistributedMember;
 import org.apache.geode.distributed.internal.DM;

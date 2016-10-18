@@ -29,10 +29,12 @@ import org.apache.geode.distributed.internal.DistributionManager;
 import org.apache.geode.distributed.internal.InternalDistributedSystem;
 import org.apache.geode.internal.Assert;
 import org.apache.geode.internal.ClassPathLoader;
+import org.apache.geode.internal.admin.api.AdminDistributedSystem;
+import org.apache.geode.internal.admin.api.AdminDistributedSystemFactory;
+import org.apache.geode.internal.admin.api.SystemMembershipEvent;
 import org.apache.geode.internal.i18n.LocalizedStrings;
 import org.apache.geode.internal.tcp.ConnectionTable;
 import org.apache.geode.internal.util.IOUtils;
-import org.apache.geode.security.GemFireSecurityException;
 
 import java.io.File;
 import java.net.InetAddress;
@@ -51,7 +53,7 @@ import static org.apache.geode.distributed.ConfigurationProperties.*;
  * is used when calling {@link
  * org.apache.geode.cache.CacheFactory#create}.  This class should
  * not be confused with the {@link
- * org.apache.geode.admin.AdminDistributedSystem
+ * AdminDistributedSystem
  * AdminDistributedSystem} interface that is used for administering a
  * distributed system.
  *
@@ -169,7 +171,7 @@ public abstract class DistributedSystem implements StatisticsFactory {
    *         If a <code>DistributedSystem</code> with a different
    *         configuration has already been created in this VM or if
    *         this VM is {@link
-   *         org.apache.geode.admin.AdminDistributedSystem
+   *         AdminDistributedSystem
    *         administering} a distributed system.
    * @throws org.apache.geode.GemFireIOException
    *         Problems while reading configuration properties file or
@@ -349,7 +351,7 @@ public abstract class DistributedSystem implements StatisticsFactory {
   }
 
   /**
-   * see {@link org.apache.geode.admin.AdminDistributedSystemFactory}
+   * see {@link AdminDistributedSystemFactory}
    * @since GemFire 5.7
    */
   protected static void setEnableAdministrationOnly(boolean adminOnly) {
@@ -362,28 +364,6 @@ public abstract class DistributedSystem implements StatisticsFactory {
       DistributionManager.isDedicatedAdminVM = adminOnly;
     }
   }
-
-//   /**
-//    * Connects to a GemFire distributed system with a configuration
-//    * supplemented by the given properties.
-//    *
-//    * @param config
-//    *        The <a href="#configuration">configuration properties</a>
-//    *        used when connecting to the distributed system
-//    * @param callback
-//    *        A user-specified object that is delivered with the {@link
-//    *        org.apache.geode.admin.SystemMembershipEvent}
-//    *        triggered by connecting.
-//    *
-//    * @see #connect(Properties)
-//    * @see org.apache.geode.admin.SystemMembershipListener#memberJoined
-//    *
-//    * @since GemFire 4.0
-//    */
-//   public static DistributedSystem connect(Properties config,
-//                                           Object callback) {
-//     throw new UnsupportedOperationException("Not implemented yet");
-//   }
 
   //////////////////////  Constructors  //////////////////////
 
@@ -476,7 +456,7 @@ public abstract class DistributedSystem implements StatisticsFactory {
    * Returns a string that uniquely identifies this connection to the
    * distributed system.
    *
-   * @see org.apache.geode.admin.SystemMembershipEvent#getMemberId
+   * @see SystemMembershipEvent#getMemberId
    *
    * @since GemFire 4.0
    * @deprecated as of GemFire 5.0, use {@link #getDistributedMember} instead

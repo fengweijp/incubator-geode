@@ -28,9 +28,9 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mockito.InOrder;
 
-import org.apache.geode.admin.internal.BackupDataStoreHelper;
-import org.apache.geode.admin.internal.FinishBackupRequest;
-import org.apache.geode.admin.internal.PrepareBackupRequest;
+import org.apache.geode.internal.admin.api.impl.BackupDataStoreHelper;
+import org.apache.geode.internal.admin.api.impl.FinishBackupRequest;
+import org.apache.geode.internal.admin.api.impl.PrepareBackupRequest;
 import org.apache.geode.distributed.internal.DM;
 import org.apache.geode.distributed.internal.locks.DLockService;
 import org.apache.geode.internal.cache.GemFireCacheImpl;

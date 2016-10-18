@@ -79,7 +79,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.geode.GemFireConfigException;
 import org.apache.geode.SystemConnectException;
 import org.apache.geode.SystemFailure;
-import org.apache.geode.admin.internal.InetAddressUtil;
+import org.apache.geode.internal.admin.api.impl.InetAddressUtil;
 import org.apache.geode.cache.wan.GatewaySender;
 import org.apache.geode.cache.wan.GatewayTransportFilter;
 import org.apache.geode.distributed.ClientSocketFactory;

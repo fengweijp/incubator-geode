@@ -30,12 +30,12 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import org.apache.geode.LogWriter;
-import org.apache.geode.admin.AdminDistributedSystem;
-import org.apache.geode.admin.AdminDistributedSystemFactory;
-import org.apache.geode.admin.Alert;
-import org.apache.geode.admin.AlertLevel;
-import org.apache.geode.admin.AlertListener;
-import org.apache.geode.admin.DistributedSystemConfig;
+import org.apache.geode.internal.admin.api.AdminDistributedSystem;
+import org.apache.geode.internal.admin.api.AdminDistributedSystemFactory;
+import org.apache.geode.internal.admin.api.Alert;
+import org.apache.geode.internal.admin.api.AlertLevel;
+import org.apache.geode.internal.admin.api.AlertListener;
+import org.apache.geode.internal.admin.api.DistributedSystemConfig;
 import org.apache.geode.cache.Cache;
 import org.apache.geode.cache.CacheListener;
 import org.apache.geode.cache.DataPolicy;

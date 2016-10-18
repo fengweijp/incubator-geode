@@ -23,7 +23,7 @@ import java.io.IOException;
 import org.apache.geode.distributed.internal.SerialDistributionMessage;
 import org.apache.logging.log4j.Logger;
 
-import org.apache.geode.admin.AlertLevel;
+import org.apache.geode.internal.admin.api.AlertLevel;
 import org.apache.geode.distributed.internal.DistributionManager;
 import org.apache.geode.internal.admin.Alert;
 import org.apache.geode.internal.i18n.LocalizedStrings;

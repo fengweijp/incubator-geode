@@ -17,7 +17,7 @@
    
 package org.apache.geode.distributed.internal;
 
-import org.apache.geode.admin.GemFireHealth;
+import org.apache.geode.internal.admin.api.GemFireHealth;
 
 /**
  * Represents a thread that monitor the health of the vm it lives in.

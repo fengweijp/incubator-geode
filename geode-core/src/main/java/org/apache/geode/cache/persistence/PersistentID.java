@@ -20,7 +20,7 @@ import java.net.InetAddress;
 import java.util.UUID;
 
 import org.apache.geode.DataSerializable;
-import org.apache.geode.admin.AdminDistributedSystem;
+import org.apache.geode.internal.admin.api.AdminDistributedSystem;
 import org.apache.geode.cache.DataPolicy;
 
 /**

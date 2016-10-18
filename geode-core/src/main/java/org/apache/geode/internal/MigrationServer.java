@@ -18,7 +18,7 @@ package org.apache.geode.internal;
 
 import static org.apache.geode.distributed.ConfigurationProperties.*;
 
-import org.apache.geode.admin.internal.InetAddressUtil;
+import org.apache.geode.internal.admin.api.impl.InetAddressUtil;
 import org.apache.geode.cache.Cache;
 import org.apache.geode.cache.CacheFactory;
 import org.apache.geode.cache.Region;

@@ -170,7 +170,6 @@ jar {
   
   exclude 'org/apache/geode/management/internal/web/**'
   exclude 'org/apache/geode/internal/i18n/StringIdResourceBundle_ja.txt'
-  exclude 'org/apache/geode/admin/doc-files/ds4_0.dtd'
 }
 
 task webJar (type: Jar, dependsOn: classes) {
